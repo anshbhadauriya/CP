@@ -1,1 +1,83 @@
+Recursive->
+
+class Solution {
+public:
+    int knapsack(vector<int>& weights, vector<int>& values, int W, int i) {
+        if(i == weights.size() || W == 0) return 0; // base case
+
+        if(weights[i] <= W) {
+            // Option 1: take the item
+            int take = values[i] + knapsack(weights, values, W - weights[i], i + 1);
+            // Option 2: skip the item
+            int skip = knapsack(weights, values, W, i + 1);
+            return max(take, skip);
+        } else {
+            // Cannot take item, skip it
+            return knapsack(weights, values, W, i + 1);
+        }
+    }
+    
+    int knapsack(vector<int>& weights, vector<int>& values, int W) {
+        return knapsack(weights, values, W, 0); // start from item 0
+    }
+};
+
+Memoized->
+
+
+class Solution {
+public:
+    int knapsack(vector<int>& weights, vector<int>& values, int W, int i, vector<vector<int>>& dp) {
+        if(i == weights.size() || W == 0) return 0;
+
+        if(dp[i][W] != -1) return dp[i][W]; // return already computed value
+
+        if(weights[i] <= W) {
+            int take = values[i] + knapsack(weights, values, W - weights[i], i + 1, dp);
+            int skip = knapsack(weights, values, W, i + 1, dp);
+            return dp[i][W] = max(take, skip);
+        } else {
+            return dp[i][W] = knapsack(weights, values, W, i + 1, dp);
+        }
+    }
+
+    int knapsack(vector<int>& weights, vector<int>& values, int W) {
+        int n = weights.size();
+        vector<vector<int>> dp(n, vector<int>(W + 1, -1));
+        return knapsack(weights, values, W, 0, dp);
+    }
+};
+
+
+
+Tabulation->
+
+
+class Solution {
+public:
+    int knapsack(vector<int>& weights, vector<int>& values, int W) {
+        int n = weights.size();
+        // dp[i][w] = max value using first i items with capacity w
+        vector<vector<int>> dp(n + 1, vector<int>(W + 1, 0));
+
+        // Build table bottom-up
+        for(int i = 1; i <= n; i++) {
+            for(int w = 0; w <= W; w++) {
+                if(weights[i-1] <= w) {
+                    // Option 1: take the item
+                    int take = values[i-1] + dp[i-1][w - weights[i-1]];
+                    // Option 2: skip the item
+                    int skip = dp[i-1][w];
+                    dp[i][w] = max(take, skip);
+                } else {
+                    // Cannot take item, skip it
+                    dp[i][w] = dp[i-1][w];
+                }
+            }
+        }
+
+        return dp[n][W]; // max value using all items
+    }
+};
+
 
