@@ -1,0 +1,29 @@
+Recursive->
+
+
+class Solution {
+public:
+    void solve(vector<int>& arr, int target, int i, int &count) {
+        if (i == arr.size()) {
+            if (target == 0) count++;
+            return;
+        }
+
+        if (arr[i] <= target) {
+            solve(arr, target - arr[i], i + 1, count);
+        }
+
+        solve(arr, target, i + 1, count);
+    }
+
+    int countPartitions(vector<int>& arr, int d) {
+        int total = accumulate(arr.begin(), arr.end(), 0);
+
+        if ((total + d) % 2 != 0 || total < d) return 0;
+
+        int target = (total + d) / 2;
+        int count = 0;
+        solve(arr, target, 0, count);
+        return count;
+    }
+};
