@@ -1,0 +1,69 @@
+Recursive->
+
+class Solution {
+public:
+    int unboundedKnapsack(vector<int>& weights, vector<int>& values, int W, int i) {
+        if(i == weights.size() || W == 0) return 0;
+
+        if(weights[i] <= W) {
+            // Option 1: take the item (stay at same index)
+            int take = values[i] + unboundedKnapsack(weights, values, W - weights[i], i);
+            // Option 2: skip the item (move to next index)
+            int skip = unboundedKnapsack(weights, values, W, i + 1);
+            return max(take, skip);
+        } else {
+            return unboundedKnapsack(weights, values, W, i + 1);
+        }
+    }
+
+    int unboundedKnapsack(vector<int>& weights, vector<int>& values, int W) {
+        return unboundedKnapsack(weights, values, W, 0);
+    }
+};
+
+
+Memoized->
+
+class Solution {
+public:
+    int unboundedKnapsack(vector<int>& weights, vector<int>& values, int W, int i, vector<vector<int>>& dp) {
+        if(i == weights.size() || W == 0) return 0;
+
+        if(dp[i][W] != -1) return dp[i][W];
+
+        if(weights[i] <= W) {
+            int take = values[i] + unboundedKnapsack(weights, values, W - weights[i], i, dp);
+            int skip = unboundedKnapsack(weights, values, W, i + 1, dp);
+            return dp[i][W] = max(take, skip);
+        } else {
+            return dp[i][W] = unboundedKnapsack(weights, values, W, i + 1, dp);
+        }
+    }
+
+    int unboundedKnapsack(vector<int>& weights, vector<int>& values, int W) {
+        int n = weights.size();
+        vector<vector<int>> dp(n, vector<int>(W + 1, -1));
+        return unboundedKnapsack(weights, values, W, 0, dp);
+    }
+};
+
+
+Tabulation->
+
+class Solution {
+public:
+    int unboundedKnapsack(vector<int>& weights, vector<int>& values, int W) {
+        int n = weights.size();
+        vector<int> dp(W + 1, 0); // dp[w] = max value for capacity w
+
+        for(int w = 0; w <= W; w++) {
+            for(int i = 0; i < n; i++) {
+                if(weights[i] <= w) {
+                    dp[w] = max(dp[w], values[i] + dp[w - weights[i]]);
+                }
+            }
+        }
+
+        return dp[W];
+    }
+};
