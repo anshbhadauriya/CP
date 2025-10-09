@@ -1,0 +1,42 @@
+Recursive->
+
+int countSubsequences(vector<int>& arr, int i, int target) {
+    if (i == arr.size()) {
+        if (target == 0) return 1;
+        return 0;
+    }
+
+    int take = 0, skip = 0; 
+
+    if (arr[i] <= target) { 
+        take = countSubsequences(arr, i + 1, target - arr[i]);
+        skip = countSubsequences(arr, i + 1, target);
+    } 
+    else {
+        skip = countSubsequences(arr, i + 1, target);
+    }
+
+    return take + skip;
+}
+
+
+
+Memoization->
+
+
+int countSubsequences(vector<int>& arr, int i, int target, vector<vector<int>>& dp) {
+    if (i == arr.size()) {
+        return target == 0 ? 1 : 0;
+    }
+
+    if (dp[i][target] != -1) return dp[i][target];
+
+    int take = 0, skip = 0;
+
+    if (arr[i] <= target) {
+        take = countSubsequences(arr, i + 1, target - arr[i], dp);
+    }
+    skip = countSubsequences(arr, i + 1, target, dp);
+
+    return dp[i][target] = take + skip;
+}
