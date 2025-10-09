@@ -1,0 +1,57 @@
+Recursive->
+
+class Solution {
+public:
+    int solve(vector<int>& coins, int amount, int i) {
+        if (amount == 0) return 0;
+        if (i == coins.size()) return 1e9;
+
+        if (coins[i] <= amount) {
+            return min(
+                1 + solve(coins, amount - coins[i], i),
+                solve(coins, amount, i + 1)
+            );
+        } else {
+            return solve(coins, amount, i + 1);
+        }
+    }
+
+    int coinChange(vector<int>& coins, int amount) {
+        int x = solve(coins, amount, 0);
+        if (x >= 1e9) {
+            return -1;
+        }
+        return x;
+    }
+};
+
+
+Memoized->
+
+
+class Solution {
+public:
+int solve(vector<int>& coins, int amount,int i,vector<vector<int>>&dp){
+    if(amount==0) return 0; 
+    if(i==coins.size()){
+        return 1e9;
+    }
+    if(dp[i][amount]!=-1){
+        return dp[i][amount];
+    }
+    if(coins[i]<=amount){
+        return dp[i][amount]=min(1+solve(coins,amount-coins[i],i,dp),solve(coins,amount,i+1,dp));
+    }
+    else{
+        return dp[i][amount]=solve(coins,amount,i+1,dp);
+    }
+}
+    int coinChange(vector<int>& coins, int amount) {
+    vector<vector<int>>dp(coins.size(),vector<int>(amount+13,-1));
+    int x=solve(coins,amount,0,dp); 
+    if(x>=1e9){
+        return -1;
+    }
+    return x;
+    }
+};
