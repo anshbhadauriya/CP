@@ -6,7 +6,6 @@ int countSubsequences(vector<int>& arr, int i, int target) {
         return 0;
     }
 
-    int take = 0, skip = 0; 
 
     if (arr[i] <= target) {
         return countSubsequences(arr, i + 1, target - arr[i]) + countSubsequences(arr, i + 1, target);          
