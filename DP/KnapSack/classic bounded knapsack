@@ -3,16 +3,13 @@ Recursive->
 class Solution {
 public:
     int knapsack(vector<int>& weights, vector<int>& values, int W, int i) {
-        if(i == weights.size() || W == 0) return 0; // base case
+        if(i == weights.size() || W == 0) return 0; 
 
         if(weights[i] <= W) {
-            // Option 1: take the item
             int take = values[i] + knapsack(weights, values, W - weights[i], i + 1);
-            // Option 2: skip the item
             int skip = knapsack(weights, values, W, i + 1);
             return max(take, skip);
         } else {
-            // Cannot take item, skip it
             return knapsack(weights, values, W, i + 1);
         }
     }
