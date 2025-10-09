@@ -8,35 +8,31 @@ int countSubsequences(vector<int>& arr, int i, int target) {
 
     int take = 0, skip = 0; 
 
-    if (arr[i] <= target) { 
-        take = countSubsequences(arr, i + 1, target - arr[i]);
-        skip = countSubsequences(arr, i + 1, target);
-    } 
-    else {
-        skip = countSubsequences(arr, i + 1, target);
+    if (arr[i] <= target) {
+        return countSubsequences(arr, i + 1, target - arr[i]) + countSubsequences(arr, i + 1, target);          
+    } else {
+        return countSubsequences(arr, i + 1, target);         
     }
-
-    return take + skip;
 }
+
 
 
 
 Memoization->
 
-
-int countSubsequences(vector<int>& arr, int i, int target, vector<vector<int>>& dp) {
-    if (i == arr.size()) {
-        return target == 0 ? 1 : 0;
+int countSubsequencesMemo(vector<int>& arr, int i, int target, vector<vector<int>>& dp) {
+     if (i == arr.size()) {
+        if (target == 0) return 1;
+        return 0;
     }
 
     if (dp[i][target] != -1) return dp[i][target];
 
-    int take = 0, skip = 0;
-
     if (arr[i] <= target) {
-        take = countSubsequences(arr, i + 1, target - arr[i], dp);
+        dp[i][target] = countSubsequencesMemo(arr, i + 1, target - arr[i], dp) + countSubsequencesMemo(arr, i + 1, target, dp);
+    } else {
+        dp[i][target] = countSubsequencesMemo(arr, i + 1, target, dp);
     }
-    skip = countSubsequences(arr, i + 1, target, dp);
 
-    return dp[i][target] = take + skip;
+    return dp[i][target];
 }
