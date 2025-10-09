@@ -1,20 +1,17 @@
 Recursive->
 
+
 class Solution {
 public:
     int solve(int i, int currSum, int totalSum, vector<int>& arr) {
-        // Base case: reached end of array
         if (i == arr.size()) {
             return abs(totalSum - 2 * currSum);
         }
 
-        // Choice 1: Take current element
-        int take = solve(i + 1, currSum + arr[i], totalSum, arr);
-        // Choice 2: Skip current element
-        int skip = solve(i + 1, currSum, totalSum, arr);
-
-        // Return the minimum difference
-        return min(take, skip);
+        return min(
+            solve(i + 1, currSum + arr[i], totalSum, arr),
+            solve(i + 1, currSum, totalSum, arr)
+        );
     }
 
     int minDifference(vector<int>& arr) {
@@ -26,35 +23,30 @@ public:
 };
 
 
-Memoized->
 
 class Solution {
 public:
     int solve(int i, int currSum, int totalSum, vector<int>& arr, vector<vector<int>>& dp) {
-        // Base case
         if (i == arr.size()) {
             return abs(totalSum - 2 * currSum);
         }
 
         if (dp[i][currSum] != -1) return dp[i][currSum];
 
-        // Choice 1: Take current element
-        int take = solve(i + 1, currSum + arr[i], totalSum, arr, dp);
-        // Choice 2: Skip current element
-        int skip = solve(i + 1, currSum, totalSum, arr, dp);
-
-        return dp[i][currSum] = min(take, skip);
+        return dp[i][currSum] = min(
+            solve(i + 1, currSum + arr[i], totalSum, arr, dp),
+            solve(i + 1, currSum, totalSum, arr, dp)
+        );
     }
 
     int minDifference(vector<int>& arr) {
         int totalSum = 0;
         for (int x : arr) totalSum += x;
 
-        // dp[i][currSum] = minimum difference from index i with currSum subset sum
         vector<vector<int>> dp(arr.size(), vector<int>(totalSum + 1, -1));
-
         return solve(0, 0, totalSum, arr, dp);
     }
 };
+
 
 
