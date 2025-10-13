@@ -2,22 +2,24 @@ Tabulation->
 
     Step 1-> pehle Longest Common Subsequence wala code likho
     Step 2-> Backtrack to find the actual subsequence
-    string lcs = "";
-    int i = n, j = m;
-    while (i > 0 && j > 0) {
-        if (s1[i - 1] == s2[j - 1]) {
-            lcs += s1[i - 1];  // include character
-            i--;
-            j--;
-        } else if (dp[i - 1][j] > dp[i][j - 1])
-            i--;
-        else
-            j--;
-    }
+   int i = m, j = n;
+        string lcs = "";
+        while (i > 0 && j > 0) {
+            if (text2[i - 1] == text1[j - 1]) {
+                lcs += text1[j - 1]; // add matching character
+                i--;
+                j--;
+            } else if (dp[i - 1][j] > dp[i][j - 1]) {
+                i--;
+            } else {
+                j--;
+            }
+        }
 
-    reverse(lcs.begin(), lcs.end()); // reverse to get correct order
-    return lcs;
-}
+        reverse(lcs.begin(), lcs.end()); // correct order
+        return lcs; // return the actual LCS
+    }
+};
 
 
 
