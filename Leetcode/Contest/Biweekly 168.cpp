@@ -36,6 +36,7 @@ public:
 
 Q2->
 
+zyda se zyda 9 lagao aange bss!
 class Solution {
 public:
     string maxSumOfSquares(int num, int sum) {
