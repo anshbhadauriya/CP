@@ -1,7 +1,14 @@
 # How to identify Binary Search problem? 
 
 Ansh zaroori nhi hai binary search sirf sorted array me lagega! 
-so to identitify
+Jab bhi question me bole ki minimum number or maximum number of ways or any thing related too observe kro ki jab tum input value badha rhe ho too kya output bhi badh rha hai yaa ghat rha hai monotonically then we can apply binary search, suppose kisi question me bola hoo find minimum number which divides all the number of given array so take 1 as a low
+              maximum element of array as high 
+              mid=low+(high-low)/2
+              check kro kya mid se sare element divisible hai if hai too decrease the mid by going h=mid-1;
+              else, l=mid+1
+
+              
+
 
 <img width="797" height="269" alt="image" src="https://github.com/user-attachments/assets/251929f9-440e-4809-8049-736f0bb96634" />
 
