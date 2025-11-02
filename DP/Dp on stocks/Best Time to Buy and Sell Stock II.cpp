@@ -1,3 +1,28 @@
+Recursive->
+
+    class Solution {
+public:
+int solve(vector<int>&prices,int buy,int i){
+    if(i==prices.size()){
+        return 0;
+    }
+    int profit=0;
+    if(buy){
+        profit=max(solve(prices,0,i+1)-prices[i],0+solve(prices,1,i+1));
+    }
+    else{
+        profit=max(solve(prices,1,i+1)+prices[i],solve(prices,0,i+1));
+    }
+    return profit;
+}
+    int maxProfit(vector<int>& prices) {
+        int i=0;
+        return solve(prices,1,i);
+    }
+};
+
+Memoized->
+
 class Solution {
 public:
 int solve(vector<int>&prices,int buy,int i,vector<vector<int>>&dp){
