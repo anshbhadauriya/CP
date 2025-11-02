@@ -1,1 +1,9 @@
+✅ So, the conditions are:
 
+Count frequency of each character.
+
+If the string length is even:
+➤ All characters must have even frequencies.
+
+If the string length is odd:
+➤ Exactly one character can have an odd frequency, all others must be even.
