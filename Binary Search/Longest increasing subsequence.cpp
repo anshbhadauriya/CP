@@ -10,21 +10,8 @@ public:
                 continue;
             }
 
-            int l=0,h=temp.size()-1;
-            
-            int ans=h;
-            while(l<=h){
-                int mid=l+(h-l)/2;
-                if(temp[mid]>=curr){
-                    ans=mid;
-                    h=mid-1;
-                }
-                else{
-                    l=mid+1;
-                }
-            }
-            temp[ans]=curr;
-
+            int idx=lower_bound(temp.begin(),temp.end(),curr)-temp.begin();
+            temp[idx]=curr;
         }
         return temp.size();
     }
