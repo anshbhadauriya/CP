@@ -5,9 +5,9 @@ int upperBound(const vector<int>& nums, int target) {
         int mid = l + (h - l) / 2;
         if (nums[mid] > target) {
             ans = mid; 
-            l = mid + 1;
-        } else {
             h = mid - 1;
+        } else {
+            l = mid + 1;
         }
     }
     return ans;
@@ -24,4 +24,5 @@ vector<int> nums = {1, 3, 3, 5, 7};
     int index = it - nums.begin();  // convert iterator to index
 
     cout << "Upper bound index: " << index << endl; // 3
+
 
