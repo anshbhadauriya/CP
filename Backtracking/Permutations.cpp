@@ -4,12 +4,12 @@ For OA's->
 public:
     vector<vector<int>> permute(vector<int>& nums) {
 
-        sort(nums.begin(), nums.end());   // IMPORTANT
+        sort(nums.begin(), nums.end());  //IMPORTANT hai sort krna 
         vector<vector<int>> ans;
 
-        do {
+        
             ans.push_back(nums);
-        } while (next_permutation(nums.begin(), nums.end()));
+         while(next_permutation(nums.begin(), nums.end())) ans.push_back(nums);
 
         return ans;
     }
