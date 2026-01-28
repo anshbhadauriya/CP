@@ -1,0 +1,34 @@
+if u want to take same element many times like suppose there is a vector and you want to reach target sum using vector elements
+
+if taking same element multiple times is allowed:-
+
+void solve(int i, int sum, vector<int>& nums) {
+    if (sum == target) {
+        // found a valid combination
+        return;
+    }
+    if (sum > target || i == nums.size()) return;
+
+    // take current element again (stay at i)
+    solve(i, sum + nums[i], nums);
+
+    // skip current element (move to next)
+    solve(i + 1, sum, nums);
+}
+
+
+if taking same element is not allowed:-
+
+void solve(int i, int sum, vector<int>& nums) {
+    if (sum == target) {
+        // valid answer
+        return;
+    }
+    if (sum > target || i == nums.size()) return;
+
+    // take (ONLY once)
+    solve(i + 1, sum + nums[i], nums);
+
+    // skip
+    solve(i + 1, sum, nums);
+}
