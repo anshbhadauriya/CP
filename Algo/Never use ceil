@@ -1,0 +1,2 @@
+Never use only ceil like ceil(5/2) bcs u expect to get 3 but u will get 2 
+so instead do ceil(double(5/2))
