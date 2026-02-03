@@ -1,5 +1,12 @@
 //take pop skip
 
+Same as subsets question only difference is :
+
+size of subset is given
+
+maximum value is given manually
+
+
 https://www.youtube.com/watch?v=QQ9Tn2i269I&list=PLpIkg8OmuX-KJPC18SGiRUzJQAYo839ox&index=7
 
 class Solution {
