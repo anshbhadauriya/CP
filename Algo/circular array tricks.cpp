@@ -7,3 +7,6 @@ int safeindex(int i , int n){
     return i%n;
 }
 
+
+if you want to access i+nums[i]th index element and when nums[i] can be negative means negative index handling=>
+  result[i]= nums[((i+nums[i])%n+n)%n];
