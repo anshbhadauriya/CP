@@ -4,7 +4,7 @@ void solve(int number,int sum,vector<int>&curr,vector<vector<int>>&answer,int li
 
     if(curr.size()>limit) return;
 
-    if(sum>target) return;
+    if(sum>target) return;  //ok
     
      if(sum==target and curr.size()==limit){
         answer.push_back(curr);
