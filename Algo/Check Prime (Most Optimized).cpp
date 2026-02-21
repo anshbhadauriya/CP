@@ -1,3 +1,11 @@
+bool isprime(int x){
+    return (1<<x) & 665772;
+}
+
+
+
+
+
 bool isPrime(int n) {
     if (n <= 1) return false;
     if (n <= 3) return true;
@@ -8,4 +16,5 @@ bool isPrime(int n) {
             return false;
     }
     return true;
+
 }
