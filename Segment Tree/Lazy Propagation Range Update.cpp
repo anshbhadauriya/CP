@@ -9,7 +9,7 @@
 //T.C : O(logn)
 //S.C : O(n)
 //Assuming we have defined segmentTree[4*n] and lazyTree[4*n]
-void updateRange(int start, int end, int i, int l, int r, int val) {
+void updateRange(int start, int end, int i, int l, int r, int val) {    //start and end is query range,  l and r are size of given nums
     if (lazyTree[i] != 0) {
         segTree[i] += (r - l + 1) * lazyTree[i];
       
