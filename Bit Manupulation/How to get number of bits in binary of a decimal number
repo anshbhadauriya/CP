@@ -1,1 +1,1 @@
-
+int bits = log2(num) + 1;  // number of bits in num
