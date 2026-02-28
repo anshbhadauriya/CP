@@ -1,3 +1,4 @@
+template link-> https://github.com/anshbhadauriya/CP/edit/main/Segment%20Tree/Segment%20Tree%20Template.cpp
 I hope you know copying template is not cheating ❤️
 
 
