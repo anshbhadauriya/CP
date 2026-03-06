@@ -1,4 +1,49 @@
 Constraints are very small so brute force will also work 
+Expand around center->
+
+    class Solution {
+public:
+    string longestPalindrome(string s) {
+        int n=s.size();
+        string ans="";
+        int maximum=INT_MIN;
+        for(int i=0;i<n;i++){
+
+            //odd length
+            int l=i,r=i;
+
+            while(l>=0 and r<n and s[l]==s[r]){
+                l--;
+                r++;
+            }
+            int length=r-l-1;
+           
+            if(maximum<length){
+                maximum=length;
+                 ans=s.substr(l+1,length);
+            }
+
+            //even length
+            l=i,r=i+1;
+
+            while(l>=0 and r<n and s[l]==s[r]){
+                l--;
+                r++;
+            }
+            length=r-l-1;
+            
+            if(maximum<length){
+                maximum=length;
+                 ans=s.substr(l+1,length);
+            }
+
+            
+
+        }
+        return ans;
+    }
+};
+
 
 Brute Force->
 class Solution {
