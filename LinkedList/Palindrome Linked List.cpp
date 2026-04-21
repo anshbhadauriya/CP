@@ -27,7 +27,6 @@ ListNode* reverseLL(ListNode* head1){
 
     ListNode* ansh=prev;
 
-    while(ansh){ cout<<ansh->val<<" "; ansh=ansh->next;}
 
     return prev;
 
@@ -46,8 +45,6 @@ ListNode* reverseLL(ListNode* head1){
 
         //slow is now at middle
 
-        cout<<"second half"<<" "<<slow->val<<endl;
-
         ListNode* temp1=reverseLL(slow);
         ListNode* temp2=head;
 
@@ -61,4 +58,3 @@ ListNode* reverseLL(ListNode* head1){
         return true;
     }
 };
-
