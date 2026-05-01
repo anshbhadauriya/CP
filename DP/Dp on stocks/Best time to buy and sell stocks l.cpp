@@ -1,14 +1,33 @@
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) {
-     int minimum=prices[0],maximum=0;
-     for(int i=1;i<prices.size();i++){
-        int diff=prices[i]-minimum;
-        maximum=max(maximum,diff);
 
-        minimum=min(minimum,prices[i]);
-     }
-     return maximum;   
+/*
+
+Har point me bechne ki try kro lekin
+Agr kisi point me bech rhe ho so uske piche ke minimum track kro kyuki that will give max profit
+
+*/
+    int maxProfit(vector<int>& prices) {
+
+       int minimum=prices.front(),maximum=0;
+
+        for(int i=1;i<prices.size();i++){
+
+            int bought=minimum;
+
+            int sell=prices[i];
+
+            int profit=sell-bought;
+
+            maximum=max(maximum,profit);   //maximum profit
+
+            minimum=min(minimum,prices[i]);   //new bought 
+        }
+
+        return maximum;
+
+        
+        
     }
 };
 
