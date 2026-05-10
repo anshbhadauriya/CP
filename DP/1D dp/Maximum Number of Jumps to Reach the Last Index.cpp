@@ -15,14 +15,14 @@ int solve(int i,vector<int>&nums,int &target){
 
     for(int j=i+1;j<nums.size();j++){
         if(abs(nums[j]-nums[i])<=target){
-        int temp=solve(j,nums,target);
+        int temp=solve(j,nums,target);  //pre check
 
-        if(temp!=-1) ans=max(ans,1+temp);
+        if(temp!=-1) ans=max(ans,1+temp); //check kro ki state valid hai ya nhi
 
         }
     }
 
-    return dp[i]=ans;
+    return dp[i]=ans;  //agr -1 hai ans too invalid 
 
 }
     int maximumJumps(vector<int>& nums, int target) {
