@@ -8,7 +8,7 @@ public:
                vector<int>& nums,
                int target) {
 
-        if (sum == target) {
+        if (sum == target) { 
             ans.push_back(curr);
             return;
         }
