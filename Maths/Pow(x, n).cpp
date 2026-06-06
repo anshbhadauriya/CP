@@ -32,3 +32,51 @@ double solve(double x,long n){
        return solve(x,1L*n);
     }
 };
+
+
+Iterative->
+
+    class Solution {
+public:
+    double myPow(double x, int n) {
+
+
+        //abh iterative version
+
+        long long N=n;
+        double X=x;
+        double ans=1;
+
+        if(N<0){
+
+            X=1/X;
+            N=-N;
+
+        }
+
+        
+
+        while(N>0){
+
+
+            if(N%2==1){  //jab N yani power odd ho tabhi ans me multiply kro 
+                ans*=X;
+            }
+
+            cout<<"current X is "<<X<<endl;
+            cout<<"current N is "<<N<<endl;
+
+            N=N/2;
+            X=X*X;
+
+            
+        }
+
+      
+
+       
+        return ans;
+        
+    }
+};
+
