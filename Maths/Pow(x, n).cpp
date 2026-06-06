@@ -8,6 +8,7 @@ so it means
 2power8 == 4power4
 
 so keep making it half to avoid TLE and keep multiplying (make it in long long to prevent from over flow)
+TC and SC = O(log n)
 */
 
 double solve(double x,long n){
