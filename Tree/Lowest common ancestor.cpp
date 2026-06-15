@@ -1,3 +1,54 @@
+Simple version->
+
+/*
+
+root se lekr p tk path nikalo
+root se lekr q tk path nikalo
+jo bhi first uncommon ho vo return krdo
+ */
+class Solution {
+public:
+bool findPath(TreeNode* root,TreeNode* target,vector<TreeNode*>&path){
+
+    if(!root) return false; //current path me target nhi mila mtlb so return false
+
+    path.push_back(root);
+
+    if(root==target) return true;  //agr target mil gya so we dont need to expore more
+
+    if(findPath(root->left,target,path) or findPath(root->right,target,path)) return true;
+    //path found return true
+
+    path.pop_back(); //current path me null aagya mtlb target nhi mila so remove current path
+
+    return false;
+
+}
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        vector<TreeNode*>p_path,q_path;
+
+        findPath(root,p,p_path);
+        findPath(root,q,q_path);
+
+        int i=0;
+
+        while(i<p_path.size() and i<q_path.size() and p_path[i]==q_path[i]){
+            i++;
+        }
+
+        return p_path[i-1];
+
+        /*
+        TC-> O(n)
+        Sc-> O(n)
+        */
+
+        
+    }
+};
+
+Optimized->
+
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
