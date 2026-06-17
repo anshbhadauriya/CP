@@ -19,34 +19,52 @@ public:
 For interviews->
 
 Approach 1->
-  class Solution {
+class Solution {
 public:
-vector<vector<int>>ans;
-void solve(vector<int>nums,int idx){
+vector<vector<int>>result;
+void solve(int idx,vector<int>&nums){
 
     if(idx==nums.size()){
-
-        ans.push_back(nums);
+        result.push_back(nums);
         return;
     }
-
-
     for(int i=idx;i<nums.size();i++){
-
         swap(nums[idx],nums[i]);
-
-        solve(nums,idx+1);
-
+        solve(idx+1,nums);
         swap(nums[idx],nums[i]);
     }
 }
     vector<vector<int>> permute(vector<int>& nums) {
-         solve(nums,0);
 
-         return ans;
+        solve(0,nums);
+
+        return result;
+
+        /*
+        Time Complexity
+
+At each position, you choose one of the remaining elements.
+
+For n elements:
+
+Level 0 : n choices
+Level 1 : n-1 choices
+Level 2 : n-2 choices
+...
+
+Total leaf nodes:
+
+n!
+
+and har leaf me ham copy krke nums ko result me dal rhe so O(n)
+so TC -> O(n*n!)
+
+SC->
+O(n × n!)
+        */
+        
     }
 };
-
 
 
 
