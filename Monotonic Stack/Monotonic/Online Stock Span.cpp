@@ -23,3 +23,9 @@ stack<pair<int,int>>st; //ele , kitna span hai
     }
 };
 
+/*
+at most each ele pushed once and popped once 
+Tc-> O(2n) -> O(n)
+SC-> O(n) if decreasing order me ele aage 
+*/
+
