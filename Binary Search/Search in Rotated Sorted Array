@@ -1,29 +1,61 @@
 class Solution {
 public:
+/*
+sbse pehle identify which part is sorted and which part is unsorted
+
+agr nums[mid]<nums[h] so right part is sorted
+
+agr nums[l]<nums[mid] so left part is sorted
+
+abh agr hamara target kisi sorted part ke bich me lie kr rha soo ussi part me binary search laga do
+example: 
+nums[mid]<nums[h] mtlb right part is sorted so now check is target lie bw mid and h so check 
+if target>nums[mid] and target<nums[h] so right side me binary search
+
+lekin agr inke bich me target nhi lie kr rha too do same for opposite side 
+
+*/
     int search(vector<int>& nums, int target) {
-        int st=0,end=nums.size()-1;
-        while(st<=end){
-            int mid=st+(end-st)/2;
-            if(target==nums[mid]){
-                return mid;
+
+        int l=0,h=nums.size()-1;
+
+        while(l<=h){
+            int mid=l+(h-l)/2;
+
+            if(nums[mid]==target) return mid;
+
+            if(nums[mid]<nums[h]){  //agr right side sorted hai 
+
+            if(target>nums[mid] and target<=nums[h]){ //target lie in right sorted part
+
+            l=mid+1;
             }
-            if(nums[mid]<=nums[end]){
-                if(target>=nums[mid] and target<=nums[end]){
-                    st=mid+1;
-                }
-                else{
-                    end=mid-1;
-                }
+            else{
+                h=mid-1;  //agr sorted part me nhi too left me check
             }
-            else if(nums[mid]>=nums[st]){
-                if(target>=nums[st] and target<=nums[mid]){
-                    end=mid-1;
-                }
-                else{
-                    st=mid+1;
-                }
+            
             }
+
+          else  {  //left side sorted hai
+
+            if(target<nums[mid] and target>=nums[l]){  //target lie in left sorted part
+                h=mid-1;
+            }
+            else{
+                l=mid+1;  //sorted part me nhi unsorted right side hoga
+            }
+            }
+
+
+
         }
+
         return -1;
+        
     }
 };
+
+/*
+TC-> O(log n)
+SC->O(1)
+*/
