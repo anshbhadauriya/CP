@@ -30,3 +30,62 @@ bool isSame(TreeNode* left_subtree,TreeNode* right_subtree){
         
     }
 };
+
+BFS-> 
+
+   /*
+Now do this with level order traversal
+ */
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+
+        queue<TreeNode*>q;
+
+        q.push(root);
+
+
+        while(!q.empty()){
+
+            int n=q.size();
+
+            vector<int>temp;
+
+            for(int i=0;i<n;i++){
+
+                TreeNode* curr=q.front();
+                q.pop();
+
+                if(curr->left){
+                    q.push(curr->left);
+                    temp.push_back(curr->left->val);
+                } 
+                else temp.push_back(-101);  //-101 indicates NULL
+
+                if(curr->right){
+                    q.push(curr->right);
+                    temp.push_back(curr->right->val);
+                }
+                else temp.push_back(-101);
+
+            }
+
+            int l=0,h=temp.size()-1;
+        //     cout<<"level is "<<level<<"-> ";
+        //     for(auto x:temp) cout<<x<<" ";
+        //     cout<<endl;
+
+
+            while(l<h){
+                if(temp[l]!=temp[h]) return false;
+                l++;
+                h--;
+            }
+
+
+        }
+
+        return true;
+        
+    }
+};
