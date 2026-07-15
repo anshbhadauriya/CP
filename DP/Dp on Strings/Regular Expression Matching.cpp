@@ -42,13 +42,38 @@ bool solve(string s,string p){
     /*
     yaa too skip yaa fir take 
     take tbhi krege jab first character . ho aur curr second * 
-    */
+    
+    lets take a example
+    s = "aaab"
+    p = "a*b"
+
+    now when we are at idx 0 so we have two choice either skip this a* (we can skip bcs * means ki 0 or more time le skte ho) kyuki kya pta a* ke baad aaab ho 
+    */ 
 
     if(p.size()>=2 and p[1]=='*'){
         return solve(s,p.substr(2)) or (first_char_matched and solve(s.substr(1),p));
     }
     else{
+        /*
+just check curr ele
+s = "abc"
+p = "abc"
 
+a == a?   ← hum sirf current check karte hain
+   ↓
+solve("bc", "bc")
+
+b == b? 
+   ↓
+solve("c", "c")
+
+c == c? 
+   ↓
+solve("", "")
+
+TRUE
+        
+        */
         return first_char_matched and solve(s.substr(1),p.substr(1));
 
     }
