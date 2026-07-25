@@ -7,8 +7,17 @@ class Solution {
   
   so when you pop out stack so jis ele me nhi ja pa rhe will come at front and 
   jidr easily ja pa rhe vo last me
-  
-  */
+
+A node should appear only after all of its outgoing neighbours
+have been processed.
+
+So during DFS, first visit all neighbours recursively.
+When we return back (i.e., the node is fully processed),
+push it into the stack.
+
+Nodes finish in reverse topological order.
+Hence popping the stack gives the correct topological ordering.
+*/
   
   stack<int>st;
   
