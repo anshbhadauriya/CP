@@ -42,6 +42,35 @@ so how to know all these dependecies????
 ## TOPOLOGICAL SORT !!
 topo logical sort says ki pehle baccho (childrens) ko stack me daldo then parent 
 
+<img width="1598" height="975" alt="image" src="https://github.com/user-attachments/assets/582e91a0-9025-4879-8707-c70f8eb73b20" />
+
+<img width="557" height="712" alt="image" src="https://github.com/user-attachments/assets/84b415cb-359a-411f-af42-209c46c9e46d" />
+
+reverse isslie taki parent last me aajae aur children pehle 
+
+
+after toposort stack will look like this
+
+<img width="1072" height="691" alt="image" src="https://github.com/user-attachments/assets/5ef28e88-a58a-4253-b4e8-cc0b716442b5" />
+
+abh stack ke top se down ke form me dfs kro simply 
+
+
+<img width="1065" height="683" alt="image" src="https://github.com/user-attachments/assets/e5e3e400-965d-4f29-8475-eeb148e9bf86" />
+
+H->I->G->J abh J se kahi aur nhi ja skte mtlb ek strongly conntected component (SCC) mil gya 
+so abh K se J nhi ja skte bcs that component is already visited
+so K alone is strongly connected component
+
+<img width="1071" height="667" alt="image" src="https://github.com/user-attachments/assets/c8f3bfd1-596d-436c-8854-d7ec00c8b1ba" />
+
+<img width="1077" height="675" alt="image" src="https://github.com/user-attachments/assets/4f49192f-a03b-4b53-b02f-f2f5780f879f" />
+
+<img width="1068" height="682" alt="image" src="https://github.com/user-attachments/assets/a5c64ae7-f7e9-4363-b985-ec4f931a636c" />
+
+
+
+
 
 
 
