@@ -69,6 +69,20 @@ so K alone is strongly connected component
 <img width="1068" height="682" alt="image" src="https://github.com/user-attachments/assets/a5c64ae7-f7e9-4363-b985-ec4f931a636c" />
 
 
+But yeh question hamesha aaegaa ki reverse kyu kra graph ko.. intuiton kyaa thi reverse krne ki?
+
+so if u look at before's graph
+
+<img width="1073" height="438" alt="image" src="https://github.com/user-attachments/assets/65a9e588-d12b-41cb-8bbd-35fe1a3b3019" />
+
+ham scc1 se scc2 me jaa skte scc3 se scc2 pr jaa skte lekin ss2 see kahi nhi ja skte so 
+
+scc3->scc1->scc2 yeh order me dependency hai 
+
+too agr ham pehle scc1 se traverse krege too ham scc2 me chle ja skte hai
+
+too agr ham reverse krdete hai too ham scc2 se scc1 pr jaa skege 
+
 
 
 
