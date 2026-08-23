@@ -1,3 +1,47 @@
+Optimal->
+
+    /*
+Intution is->
+
+agr dono linked list ki length equal hoti too dono ek point pr aakr meet krte
+too jis bhi linked list ki length kam hai usse thoda wait krvana pdega taki dono equal distance pr
+aajae
+so what we can do iss->
+dono linkedlist me sth me traversal shuru kro jab choti wali null pr aajae too usse badi wali linked list ke shuru pr rkh do aur jab badi wali linkedlist null pr aae too choti wali pr rkhdo
+
+abh isse hoga yeh ki jis pointer ke paas lead thi jitni zyda abh uske paas se vo lead chli jaegi
+
+so abh dono pointers equal position me aajaege 
+try to do dryrun in notebook fir easily smjh aajaegaa..
+*/
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+
+        ListNode* a=headA;
+        ListNode* b=headB;
+
+        while(a!=b){
+
+            if(!a) a=headB;
+            else a=a->next;
+
+            if(!b) b=headA;
+            else b=b->next;
+        }
+
+        return b;
+        
+    }
+};
+
+/*
+TC-> O(n+m)
+SC-> O(1)
+*/
+
+
+
 /*
 
 notice kro ki list A aur list B ki length same ho too sth me start kr dete dono ke pointer aur jidhr bhi meet krte so vo meeting point hojata
